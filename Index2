@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Six on a Shoestring — Curated Home Picks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #E4E7DE;
+    --surface: #FAFAF5;
+    --ink: #232620;
+    --ink-soft: #565A4E;
+    --sage: #6B7A5E;
+    --ochre: #B8862F;
+    --line: #C6C9B8;
+    --shelf-shadow: rgba(35,38,32,0.16);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); color: var(--ink); font-family: 'Public Sans', sans-serif; line-height: 1.5; }
+  .wrap{ max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+  .disclosure{
+    background: var(--ink); color: var(--bg); font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px; letter-spacing: 0.02em; text-align: center; padding: 9px 16px;
+  }
+
+  header{ padding: 64px 0 40px; border-bottom: 1px solid var(--line); }
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--sage); margin-bottom: 14px; }
+  h1{ font-family:'Fraunces', serif; font-weight: 500; font-size: clamp(32px, 5vw, 52px); letter-spacing: -0.01em; max-width: 26ch; }
+  header p.sub{ margin-top: 18px; max-width: 58ch; color: var(--ink-soft); font-size: 17px; }
+
+  nav.shelf-labels{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
+  nav.shelf-labels a{
+    font-family:'IBM Plex Mono', monospace; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em;
+    text-decoration: none; color: var(--ink); background: var(--surface); border: 1px solid var(--line);
+    padding: 7px 14px; border-radius: 3px; transition: all 0.15s ease;
+  }
+  nav.shelf-labels a:hover{ border-color: var(--sage); color: var(--sage); }
+
+  .shelf-section{ padding: 56px 0 8px; scroll-margin-top: 20px; }
+  .shelf-section h2{ font-family:'Fraunces', serif; font-weight: 500; font-size: 28px; display:flex; align-items:baseline; gap: 12px; }
+  .shelf-section h2 .count{ font-family:'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-soft); font-weight: 400; }
+
+  .shelf-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 28px;
+    padding-bottom: 40px; border-bottom: 1px solid var(--line); position: relative;
+  }
+  .shelf-grid::after{ content:""; position:absolute; bottom: -1px; left:0; right:0; height: 6px; background: linear-gradient(to bottom, var(--shelf-shadow), transparent); }
+
+  .card{
+    background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 20px;
+    display:flex; flex-direction:column; gap: 12px; box-shadow: 0 10px 18px -14px var(--shelf-shadow);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .card:hover{ transform: translateY(-3px); box-shadow: 0 16px 24px -14px var(--shelf-shadow); }
+  .thumb{
+    aspect-ratio: 4/3; border-radius: 3px; background-size: cover; background-position: center;
+    background-color: #E2DDC9;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-soft); text-align:center; padding: 10px;
+  }
+  .thumb.placeholder{ background-image: repeating-linear-gradient(135deg, #E9E5D6, #E9E5D6 10px, #E2DDC9 10px, #E2DDC9 20px); }
+  .pick-tag{ font-family:'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ochre); }
+  .card h3{ font-family:'Fraunces', serif; font-weight: 500; font-size: 18px; }
+  .card p{ color: var(--ink-soft); font-size: 13.5px; flex-grow: 1; }
+  .card .row{ display:flex; align-items:center; justify-content:space-between; margin-top: 4px; }
+  .price{ font-family:'IBM Plex Mono', monospace; font-size: 13px; color: var(--ink); }
+  .shop-btn{
+    font-family:'Public Sans', sans-serif; font-size: 13px; font-weight: 600; text-decoration:none;
+    color: var(--surface); background: var(--sage); padding: 8px 14px; border-radius: 3px; transition: background 0.15s ease;
+  }
+  .shop-btn:hover{ background: var(--ink); }
+
+  footer{ margin-top: 60px; padding: 36px 0 60px; color: var(--ink-soft); font-size: 13px; }
+  footer .disc-full{ max-width: 60ch; margin-bottom: 18px; }
+  footer .brand{ font-family:'Fraunces', serif; color: var(--ink); font-size: 16px; margin-bottom: 10px; }
+
+  .empty-state{
+    font-family:'IBM Plex Mono', monospace; font-size: 13px; color: var(--ink-soft);
+    border: 1px dashed var(--line); border-radius: 4px; padding: 24px; margin-top: 28px;
+  }
+
+  @media (max-width: 780px){ .shelf-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px){ .shelf-grid{ grid-template-columns: 1fr; } header{ padding: 44px 0 30px; } }
+  @media (prefers-reduced-motion: reduce){ .card{ transition: none; } }
+</style>
+</head>
+<body>
+
+<div class="disclosure">
+  THIS PAGE CONTAINS AFFILIATE LINKS — AS AN AFFILIATE, WE MAY EARN A COMMISSION ON PURCHASES MADE THROUGH THEM, AT NO EXTRA COST TO YOU.
+</div>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Six on a Shoestring / No. 01</div>
+    <h1>Things to make life a little easier, a little more organized and a little less expensive.</h1>
+    <p class="sub">Mom of four 💕 &amp; teacher 📚 constantly juggling schedules while still trying to shop 🛍️, organize 🧺 &amp; make memories 🧳 w/out breaking the bank! Nothing here is sponsored — but some links do earn a small commission if you shop through them.</p>
+    <nav class="shelf-labels" id="categoryNav"></nav>
+  </header>
+
+  <div id="shelves"></div>
+
+  <footer>
+    <div class="brand">Six on a Shoestring</div>
+    <p class="disc-full">Disclosure: Six on a Shoestring is a participant in affiliate programs, including the Amazon Associates program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by linking to affiliated stores. We only feature products we would genuinely recommend, and pricing/availability shown here may not reflect the retailer's current listing.</p>
+    <p>© 2026 Six on a Shoestring. All picks are our own opinion.</p>
+  </footer>
+</div>
+
+<script>
+/* ============================================================
+   EDIT YOUR PRODUCTS HERE — this is the only part you need to touch.
+
+   To ADD a product: copy one { ... } block below (including the comma
+   after it) and paste it into the PRODUCTS list, then change the values.
+
+   Field guide:
+     category : must exactly match one of the CATEGORIES names below
+     tag      : short label shown above the title, e.g. "Worth It", "Budget Pick"
+     name     : product name
+     blurb    : one or two sentence description
+     price    : price or range shown as text, e.g. "$45–60"
+     link     : your affiliate link (starts with https://)
+     image    : (optional) a direct image URL. Leave as "" to show a placeholder.
+
+   To REMOVE a product: delete its whole { ... } block.
+   To ADD a category: add its name to CATEGORIES, then use it in a product's "category" field.
+   ============================================================ */
+
+const CATEGORIES = ["Kitchen", "Living Room", "Bedroom", "Kid's Bedroom & Bath", "Playroom", "Organizing", "Outdoor", "Clothing", "Travel"];
+
+const PRODUCTS = [
+  { category: "Kitchen", tag: "Everyday Use", name: "Cast-Iron Skillet, 10\"", blurb: "The one pan that gets reached for daily. Holds heat evenly, gets better with age.", price: "$45–60", link: "https://example.com/affiliate-link-1", image: "" },
+  { category: "Kitchen", tag: "Small Upgrade", name: "Glass Food Storage Set", blurb: "Replaced all our plastic containers with these. No more stained lids or mystery smells.", price: "$35–50", link: "https://example.com/affiliate-link-2", image: "" },
+  { category: "Kitchen", tag: "Worth It", name: "Electric Kettle, Gooseneck", blurb: "Precise pour, quiet boil, looks good left out on the counter.", price: "$60–90", link: "https://example.com/affiliate-link-3", image: "" },
+  { category: "Kitchen", tag: "Budget Pick", name: "Bamboo Cutting Board Set", blurb: "Three sizes, one for everything. Gentle on knives, easy to clean.", price: "$20–30", link: "https://example.com/affiliate-link-4", image: "" },
+
+  { category: "Living Room", tag: "Statement", name: "Boucle Throw Pillow, 20\"", blurb: "Textured, neutral, holds shape. The one accent piece that ties a couch together.", price: "$28–40", link: "https://example.com/affiliate-link-5", image: "" },
+  { category: "Living Room", tag: "Worth It", name: "Warm-Dim Floor Lamp", blurb: "Dims to an amber glow instead of going grey and clinical. Changes the whole room at night.", price: "$80–120", link: "https://example.com/affiliate-link-6", image: "" },
+  { category: "Living Room", tag: "Everyday Use", name: "Wool Area Rug, 5x7", blurb: "Dense weave that doesn't shed or flatten under a coffee table.", price: "$150–220", link: "https://example.com/affiliate-link-7", image: "" },
+
+  { category: "Bedroom", tag: "Worth It", name: "Linen Sheet Set, Queen", blurb: "Softens with every wash. Breathes well, doesn't overheat in summer.", price: "$120–160", link: "https://example.com/affiliate-link-8", image: "" },
+  { category: "Bedroom", tag: "Small Upgrade", name: "Sunrise Alarm Clock", blurb: "Actually gets us up gentler than a phone alarm. No blue light before bed either.", price: "$40–55", link: "https://example.com/affiliate-link-9", image: "" },
+
+  { category: "Kid's Bedroom & Bath", tag: "Worth It", name: "Hooded Bath Towel, Organic Cotton", blurb: "Thick enough to actually dry a wiggly toddler, and the hood stays put.", price: "$20–28", link: "https://example.com/affiliate-link-14", image: "" },
+  { category: "Kid's Bedroom & Bath", tag: "Small Upgrade", name: "Toddler Night Light, Color-Changing", blurb: "Dims low enough not to disrupt sleep, bright enough for 3am hallway trips.", price: "$18–25", link: "https://example.com/affiliate-link-15", image: "" },
+  { category: "Kid's Bedroom & Bath", tag: "Everyday Use", name: "Bunk Bed Rail Guard", blurb: "Soft-edged and sturdy, gave us real peace of mind on the top bunk.", price: "$25–35", link: "https://example.com/affiliate-link-16", image: "" },
+
+  { category: "Playroom", tag: "Worth It", name: "Open Shelving Toy Storage Unit", blurb: "Kids can actually see and reach their own toys. Cuts down the toy-dump chaos.", price: "$80–110", link: "https://example.com/affiliate-link-17", image: "" },
+  { category: "Playroom", tag: "Budget Pick", name: "Felt Storage Bins, Set of 6", blurb: "Color-coded by toy type, folds flat when not in use.", price: "$25–35", link: "https://example.com/affiliate-link-18", image: "" },
+  { category: "Playroom", tag: "Everyday Use", name: "Large Play Mat, Foam Tile", blurb: "Soft landing for little ones, wipes clean, tiles swap out if one gets damaged.", price: "$45–65", link: "https://example.com/affiliate-link-19", image: "" },
+
+  { category: "Organizing", tag: "Budget Pick", name: "Stackable Drawer Bins", blurb: "Turned one junk drawer into three usable ones. Clear so you can actually find things.", price: "$15–25", link: "https://example.com/affiliate-link-10", image: "" },
+  { category: "Organizing", tag: "Everyday Use", name: "Vacuum Storage Bags", blurb: "Off-season clothes and bedding, shrunk to a third of the space.", price: "$18–28", link: "https://example.com/affiliate-link-11", image: "" },
+
+  { category: "Outdoor", tag: "Worth It", name: "Folding Outdoor Chair, Teak", blurb: "Weathers well, folds flat for storage, doesn't look flimsy after a season outside.", price: "$90–130", link: "https://example.com/affiliate-link-12", image: "" },
+  { category: "Outdoor", tag: "Small Upgrade", name: "Solar Path Lights, Set of 6", blurb: "No wiring, decent brightness, hasn't died after a full rainy season.", price: "$35–50", link: "https://example.com/affiliate-link-13", image: "" },
+
+  { category: "Clothing", tag: "Everyday Use", name: "Organic Cotton Basics Tee, 3-Pack", blurb: "Held up wash after wash without pilling or losing shape.", price: "$30–42", link: "https://example.com/affiliate-link-20", image: "" },
+  { category: "Clothing", tag: "Worth It", name: "Merino Wool Crew Socks", blurb: "No blisters, no smell after a full day, still holding up after a year.", price: "$16–22 per pair", link: "https://example.com/affiliate-link-21", image: "" },
+
+  { category: "Travel", tag: "Worth It", name: "Packing Cubes, Set of 6", blurb: "Turned a chaotic suitcase into something we can actually find things in.", price: "$30–40", link: "https://example.com/affiliate-link-22", image: "" },
+  { category: "Travel", tag: "Everyday Use", name: "Hardside Carry-On, 21\"", blurb: "Survived two years of gate-checking without a cracked shell or broken wheel.", price: "$120–160", link: "https://example.com/affiliate-link-23", image: "" },
+  { category: "Travel", tag: "Small Upgrade", name: "Portable Luggage Scale", blurb: "Small, cheap insurance against surprise overweight fees at check-in.", price: "$12–18", link: "https://example.com/affiliate-link-24", image: "" },
+];
+
+/* ============================================================
+   Nothing below this line needs editing — it just builds the page
+   from the CATEGORIES and PRODUCTS lists above.
+   ============================================================ */
+
+function slug(s){ return s.toLowerCase().replace(/\s+/g, '-'); }
+
+function render(){
+  const nav = document.getElementById('categoryNav');
+  const shelves = document.getElementById('shelves');
+  nav.innerHTML = '';
+  shelves.innerHTML = '';
+
+  CATEGORIES.forEach(cat => {
+    const items = PRODUCTS.filter(p => p.category === cat);
+    if (items.length === 0) return;
+
+    const link = document.createElement('a');
+    link.href = '#' + slug(cat);
+    link.textContent = cat;
+    nav.appendChild(link);
+
+    const section = document.createElement('section');
+    section.className = 'shelf-section';
+    section.id = slug(cat);
+
+    const h2 = document.createElement('h2');
+    h2.innerHTML = cat + ' <span class="count">' + String(items.length).padStart(2,'0') + ' pick' + (items.length === 1 ? '' : 's') + '</span>';
+    section.appendChild(h2);
+
+    const grid = document.createElement('div');
+    grid.className = 'shelf-grid';
+
+    items.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const thumb = document.createElement('div');
+      if (p.image) {
+        thumb.className = 'thumb';
+        thumb.style.backgroundImage = `url('${p.image}')`;
+      } else {
+        thumb.className = 'thumb placeholder';
+        thumb.textContent = 'PRODUCT PHOTO';
+      }
+
+      card.innerHTML = `
+        <div class="pick-tag">${p.tag || ''}</div>
+        <h3>${p.name}</h3>
+        <p>${p.blurb || ''}</p>
+        <div class="row">
+          <span class="price">${p.price || ''}</span>
+          <a class="shop-btn" href="${p.link}" target="_blank" rel="noopener sponsored">Shop Now →</a>
+        </div>
+      `;
+      card.prepend(thumb);
+      grid.appendChild(card);
+    });
+
+    section.appendChild(grid);
+    shelves.appendChild(section);
+  });
+
+  if (PRODUCTS.length === 0) {
+    shelves.innerHTML = '<div class="empty-state">No products yet — add some in the PRODUCTS list near the top of this file.</div>';
+  }
+}
+
+render();
+</script>
+
+</body>
+</html>
