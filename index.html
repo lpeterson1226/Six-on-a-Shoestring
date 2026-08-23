@@ -209,11 +209,12 @@ const PRODUCTS = [
   { category: "Kitchen", tag: "Budget Pick", name: "Electric Salt & Pepper Shakers", blurb: "Not sure where these have been my whole life. So much easier to grab and use while whipping up dinner.", price: "$20", link: "https://amzn.to/4gzwbCW", image: "https://m.media-amazon.com/images/I/71NpF4JP7HL._AC_UF480,480_SR480,480_.jpg" },
   { category: "Kitchen", tag: "DIY Bread", name: "Cast-Iron Dutch Oven", blurb: "Great for making bread and one pot recipes. Save on groceries & clean up time.", price: "$89", link: "https://amzn.to/4zQU9T1", image: "https://m.media-amazon.com/images/I/71cd18MALAL._AC_UL640_FMwebp_QL65_.jpg" },
   { category: "Kitchen", tag: "Save on Coffee", name: "Cold Brew Maker", blurb: "Save money and make your coffee at home! Super easy to use and clean.", price: "$20", link: "https://amzn.to/4gNwYRK", image: "https://m.media-amazon.com/images/I/81gBzXV-4xL._AC_UL640_FMwebp_QL65_.jpg" },
-
+  { category: "Kitchen", tag: "Favorite Purchase", name: "Glass Olive Oil Sprayer", blurb: "We have been cooking super healthly and this is the most used product in our kitchen.", price: "$17", link: "https://amzn.to/3UupuKM", image: "https://m.media-amazon.com/images/I/81gBzXV-4xL._AC_UL640_FMwebp_QL65_.jpg" },
+  
   { category: "Living Room", tag: "Statement", name: "Washable Area Rug", blurb: "Washable rugs! Where have you been all my life? Perfect for kids and pets. Just toss in the wash.", price: "$61-104", link: "https://amzn.to/3S9InSG", image: "https://m.media-amazon.com/images/I/81shc-8WpaL._AC_UL640_FMwebp_QL65_.jpg" },
   { category: "Living Room", tag: "Must Have", name: "Air Purifier", blurb: "So helpful in our family for seasonal and pet allergies.", price: "$89", link: "https://amzn.to/4c5HtNK", image: "https://m.media-amazon.com/images/I/71t-9BTIg9L._AC_UY436_FMwebp_QL65_.jpg" },
   { category: "Living Room", tag: "Hear Me Out", name: "Modular Seating", blurb: "Versatile, easy to clean, comfortable. Perfect for playroom, game room, extra space in a bedroom. (Also want it for my classroom, but a darker color!)", price: "$269", link: "https://amzn.to/4xgK3c4", image: "https://m.media-amazon.com/images/I/81gKJr0uVBL._AC_UL640_FMwebp_QL65_.jpg" },
-  { category: "Living Room", tag: "Worth It", name: "Warm-Dim Floor Lamp", blurb: "Dims to an amber glow instead of going grey and clinical. Changes the whole room at night.", price: "$80–120", link: "https://example.com/affiliate-link-6", image: "" },
+  { category: "Living Room", tag: "Worth It", name: "Warm-Dim Floor Lamp", blurb: "Dims to an amber glow instead of going grey and clinical. Changes the whole room at night.", price: "$80–120", link: "https://example.com/affiliate-link-6", image: "https://m.media-amazon.com/images/I/61UPeIYyy1L._AC_UL640_FMwebp_QL65_.jpg" },
   { category: "Living Room", tag: "Everyday Use", name: "Wool Area Rug, 5x7", blurb: "Dense weave that doesn't shed or flatten under a coffee table.", price: "$150–220", link: "https://example.com/affiliate-link-7", image: "" },
 
   { category: "Bedroom", tag: "Worth It", name: "Linen Sheet Set, Queen", blurb: "Softens with every wash. Breathes well, doesn't overheat in summer.", price: "$120–160", link: "https://example.com/affiliate-link-8", image: "" },
@@ -226,37 +227,6 @@ const PRODUCTS = [
   { category: "Kid's Bedroom & Bath", tag: "Small Upgrade", name: "Toddler Night Light, Color-Changing", blurb: "Dims low enough not to disrupt sleep, bright enough for 3am hallway trips.", price: "$18–25", link: "https://example.com/affiliate-link-15", image: "" },
   { category: "Kid's Bedroom & Bath", tag: "Everyday Use", name: "Bunk Bed Rail Guard", blurb: "Soft-edged and sturdy, gave us real peace of mind on the top bunk.", price: "$25–35", link: "https://example.com/affiliate-link-16", image: "" },
 
-  { category: "Playroom", tag: "Worth It", name: "Open Shelving Toy Storage Unit", blurb: "Kids can actually see and reach their own toys. Cuts down the toy-dump chaos.", price: "$80–110", link: "https://example.com/affiliate-link-17", image: "" },
-  { category: "Playroom", tag: "Budget Pick", name: "Felt Storage Bins, Set of 6", blurb: "Color-coded by toy type, folds flat when not in use.", price: "$25–35", link: "https://example.com/affiliate-link-18", image: "" },
-  { category: "Playroom", tag: "Everyday Use", name: "Large Play Mat, Foam Tile", blurb: "Soft landing for little ones, wipes clean, tiles swap out if one gets damaged.", price: "$45–65", link: "https://example.com/affiliate-link-19", image: "" },
-
-  { category: "Organizing", tag: "Budget Pick", name: "Stackable Drawer Bins", blurb: "Turned one junk drawer into three usable ones. Clear so you can actually find things.", price: "$15–25", link: "https://example.com/affiliate-link-10", image: "" },
-  { category: "Organizing", tag: "Everyday Use", name: "Vacuum Storage Bags", blurb: "Off-season clothes and bedding, shrunk to a third of the space.", price: "$18–28", link: "https://example.com/affiliate-link-11", image: "" },
-
-  { category: "Outdoor", tag: "Outdoor Oasis", name: "Patio Set", blurb: "Catch this end of summer sale. Great set for spending your days outside even this fall.", price: "$289.96", link: "https://amzn.to/4xZXJsb", image: "https://m.media-amazon.com/images/I/91lIelN+sVL._AC_UL640_FMwebp_QL65_.jpg" },
-  { category: "Outdoor", tag: "Small Upgrade", name: "Patio Umbrella", blurb: "Looks great, blocks the sun to keep your space comfortable. Tons of colors and super sturdy base.", price: "$67-82", link: "https://amzn.to/4gwGGqp", image: "https://m.media-amazon.com/images/I/71j1-MXzaxL._AC_UL640_FMwebp_QL65_.jpg" },
-  { category: "Outdoor", tag: "Worth It", name: "Folding Outdoor Chair, Teak", blurb: "Weathers well, folds flat for storage, doesn't look flimsy after a season outside.", price: "$90–130", link: "https://example.com/affiliate-link-12", image: "" },
-  { category: "Outdoor", tag: "Small Upgrade", name: "Solar Path Lights, Set of 6", blurb: "No wiring, decent brightness, hasn't died after a full rainy season.", price: "$35–50", link: "https://example.com/affiliate-link-13", image: "" },
-
-  { category: "Clothing", tag: "Everyday Use", name: "Organic Cotton Basics Tee, 3-Pack", blurb: "Held up wash after wash without pilling or losing shape.", price: "$30–42", link: "https://example.com/affiliate-link-20", image: "" },
-  { category: "Clothing", tag: "Worth It", name: "Merino Wool Crew Socks", blurb: "No blisters, no smell after a full day, still holding up after a year.", price: "$16–22 per pair", link: "https://example.com/affiliate-link-21", image: "" },
-
-  { category: "Travel", tag: "Worth It", name: "Packing Cubes, Set of 6", blurb: "Turned a chaotic suitcase into something we can actually find things in.", price: "$30–40", link: "https://example.com/affiliate-link-22", image: "" },
-  { category: "Travel", tag: "Everyday Use", name: "Hardside Carry-On, 21\"", blurb: "Survived two years of gate-checking without a cracked shell or broken wheel.", price: "$120–160", link: "https://example.com/affiliate-link-23", image: "" },
-  { category: "Travel", tag: "Small Upgrade", name: "Portable Luggage Scale", blurb: "Small, cheap insurance against surprise overweight fees at check-in.", price: "$12–18", link: "https://example.com/affiliate-link-24", image: "" },
-
-  { category: "Kitchen", tag: "Trending Now", name: "Glass Olive Oil Sprayer, 16oz", blurb: "Even mist for cooking and air frying, no more oily spray-can buildup.", price: "$15–20", link: "https://example.com/affiliate-link-25", image: "" },
-  { category: "Kitchen", tag: "Trending Now", name: "KitchenAid Can & Bottle Opener", blurb: "Smooth crank, no jagged edges left behind, sits well in the hand.", price: "$12–18", link: "https://example.com/affiliate-link-26", image: "" },
-  { category: "Kitchen", tag: "Trending Now", name: "Air Fryer Disposable Liners, 125-Pack", blurb: "No more scrubbing the basket — line it, cook, toss it.", price: "$10–14", link: "https://example.com/affiliate-link-27", image: "" },
-  { category: "Kitchen", tag: "Trending Now", name: "Stanley Quencher Tumbler, 30oz", blurb: "Keeps ice all day, the handle actually gets used, fits in the car cup holder.", price: "$35–45", link: "https://example.com/affiliate-link-28", image: "" },
-
-  { category: "Bedroom", tag: "Trending Now", name: "Waterproof Mattress Protector, Zippered", blurb: "Full encasement, blocks dust mites and spills, quiet with no crinkly plastic sound.", price: "$30–45", link: "https://example.com/affiliate-link-29", image: "" },
-
-  { category: "Living Room", tag: "Trending Now", name: "DC Motor Tower Fan, 8-Speed", blurb: "Quiet enough for background noise, oscillates wide, remote included.", price: "$90–130", link: "https://example.com/affiliate-link-30", image: "" },
-
-  { category: "Outdoor", tag: "Trending Now", name: "Pollinator Flower Seed Pack", blurb: "Easy-grow zinnias and dahlias, good for borders, containers, or a cutting garden.", price: "$10–15", link: "https://example.com/affiliate-link-32", image: "" },
-
-  { category: "Kid's Bedroom & Bath", tag: "Trending Now", name: "Character Insulated Lunch Box", blurb: "Fits a bento box easily, holds up to daily wash-and-reuse, kids actually want to carry it.", price: "$15–22", link: "https://example.com/affiliate-link-33", image: "" },
 ];
 
 /* ============================================================
